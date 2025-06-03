@@ -14,10 +14,12 @@ public class Profissional {
     @Column(nullable = false)
     private String nome;
 
+    
     private String telefone;
 
     
     
+   
     @Column(length = 11)
     private String cpf;
     
