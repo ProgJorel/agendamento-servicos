@@ -17,6 +17,7 @@ public class Profissional {
     private String telefone;
 
     
+    
     @Column(length = 11)
     private String cpf;
     
