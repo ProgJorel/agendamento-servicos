@@ -12,6 +12,7 @@ public class AgendamentoService {
 
     private final AgendamentoRepository agendamentoRepository;
 
+    
     public AgendamentoService(AgendamentoRepository agendamentoRepository) {
         this.agendamentoRepository = agendamentoRepository;
     }
