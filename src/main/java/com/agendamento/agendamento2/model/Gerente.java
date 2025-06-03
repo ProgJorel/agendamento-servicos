@@ -14,6 +14,7 @@ public class Gerente {
     private Long id;
 
     
+    
     @Column(nullable = false, unique = true)
     private String usuario;
 
