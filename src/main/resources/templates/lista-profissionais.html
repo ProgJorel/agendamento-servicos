@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Profissionais</title>
+     <link rel="stylesheet" th:href="@{/fundo.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Profissionais</h1>
+
+    <!-- Mensagem de sucesso -->
+    <div th:if="${mensagem}" class="mensagem-sucesso" th:text="${mensagem}"></div>
+
+    <table class="tabela-agendamentos">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>CPF</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="p : ${profissionais}">
+                <td th:text="${p.nome}">Nome</td>
+                <td th:text="${p.telefone}">Telefone</td>
+                <td th:text="${p.cpf}">CPF</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="botoes">
+        <a th:href="@{/gerente/menu}" class="btn">Voltar ao Menu</a>
+    </div>
+</div>
+</body>
+</html>

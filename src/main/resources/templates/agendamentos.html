@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Agendamentos</title>
+    <link rel="stylesheet" th:href="@{/fundo.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Agendamentos</h1>
+        <div class="botoes">
+            <a th:href="@{/}">Voltar ao Início</a>
+        </div>
+
+        <table class="tabela-agendamentos">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Horário</th>
+                    <th>Cliente</th>
+                    <th>Profissional</th>
+                    <th>Tipo</th>
+                    <th>Bebida</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="a : ${agendamentos}">
+                    <td th:text="${a.data}"></td>
+                    <td th:text="${a.horario}"></td>
+                    <td th:text="${a.cliente.nome}"></td>
+                    <td th:text="${a.profissional.nome}"></td>
+                    <td th:text="${a.tipoAtendimento}"></td>
+                    <td th:text="${a.bebida.nome}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

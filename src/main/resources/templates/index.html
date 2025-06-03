@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bem-vindo</title>
+    <link rel="stylesheet" th:href="@{/fundo.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Bem-vindo ao Sistema de Agendamento</h1>
+        <p>Escolha seu perfil para continuar:</p>
+        
+        <div class="botoes">
+            <a th:href="@{/agendamentos/novo}" class="btn">Sou Cliente</a>
+            <a th:href="@{/gerente/login}" class="btn">Sou Gerente</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+
+.container {
+    background-color: rgba(255, 255, 255, 0.95);
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+h1 {
+    color: #2e8b57;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #444;
+}
+
+ul, table {
+    list-style: none;
+    padding: 0;
+    margin: 20px auto;
+    max-width: 100%;
+}
+
+a, button,
+.btn {
+    background-color: #007bff;
+    color: white !important;
+    text-decoration: none !important;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border-radius: 8px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+a:hover, button:hover,
+.btn:hover {
+    background-color: #0056b3;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+input, select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.botoes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+    margin-top: 30px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+td {
+    color: #333;
+}
+
+.mensagem-sucesso {
+    color: #155724;
+    background-color: #d4edda;
+    padding: 10px;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    margin: 10px auto;
+    max-width: 600px;
+}

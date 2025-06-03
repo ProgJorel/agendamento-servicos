@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Agendamentos</title>
+    <link rel="stylesheet" th:href="@{/fundo.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Agendamentos</h1>
+        <div class="botoes">
+            <a th:href="@{/}">Voltar ao Início</a>
+        </div>
+
+        <table class="tabela-agendamentos">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Horário</th>
+                    <th>Cliente</th>
+                    <th>Profissional</th>
+                    <th>Tipo</th>
+                    <th>Bebida</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="a : ${agendamentos}">
+                    <td th:text="${a.data}"></td>
+                    <td th:text="${a.horario}"></td>
+                    <td th:text="${a.cliente.nome}"></td>
+                    <td th:text="${a.profissional.nome}"></td>
+                    <td th:text="${a.tipoAtendimento}"></td>
+                    <td th:text="${a.bebida.nome}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+_____________________________________________________________________________________________
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Cliente</title>
+     <link rel="stylesheet" th:href="@{/fundo.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Cadastro de Cliente</h1>
+
+    <form th:action="@{/gerente/salvar-cliente}" th:object="${cliente}" method="post">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" th:field="*{nome}" required />
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{email}" />
+        </div>
+
+        <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" th:field="*{telefone}" />
+        </div>
+
+        <div class="botoes">
+            <button type="submit">Salvar</button>
+            <a th:href="@{/gerente/menu}" class="btn">Voltar ao Menu</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+_____________________________________________________________________________________________
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Profissional</title>
+     <link rel="stylesheet" th:href="@{/fundo.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Cadastro de Profissional</h1>
+    <form th:action="@{/gerente/salvar-profissional}" th:object="${profissional}" method="post">
+
+        <div class="form-group">
+            <label>Nome:</label>
+            <input type="text" th:field="*{nome}" placeholder="Digite o nome completo" required />
+        </div>
+
+        <div class="form-group">
+            <label>Telefone:</label>
+            <input type="text" th:field="*{telefone}" placeholder="(31) 91234-5678" required />
+        </div>
+
+        <div class="form-group">
+            <label>CPF:</label>
+            <input type="text" th:field="*{cpf}" placeholder="Apenas números, ex: 12345678900" required maxlength="11"/>
+        </div>
+
+        <div class="botoes">
+            <button type="submit">Cadastrar</button>
+            <a th:href="@{/index.html}">Voltar à Página Inicial</a>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
+_____________________________________________________________________________________________
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bem-vindo</title>
+    <link rel="stylesheet" th:href="@{/fundo.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Bem-vindo ao Sistema de Agendamento</h1>
+        <p>Escolha seu perfil para continuar:</p>
+        
+        <div class="botoes">
+            <a th:href="@{/agendamentos/novo}" class="btn">Sou Cliente</a>
+            <a th:href="@{/gerente/login}" class="btn">Sou Gerente</a>
+        </div>
+    </div>
+</body>
+</html>
+_____________________________________________________________________________________________
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Clientes</title>
+     <link rel="stylesheet" th:href="@{/fundo.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Clientes</h1>
+
+    <!-- Mensagem de sucesso (caso exista) -->
+    <div th:if="${mensagem}" class="mensagem-sucesso" th:text="${mensagem}"></div>
+
+    <table class="tabela-agendamentos">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="cliente : ${clientes}">
+                <td th:text="${cliente.nome}">Nome</td>
+                <td th:text="${cliente.email}">Email</td>
+                <td th:text="${cliente.telefone}">Telefone</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="botoes">
+        <a th:href="@{/gerente/menu}" class="btn">Voltar ao Menu</a>
+    </div>
+</div>
+</body>
+</html>
+_____________________________________________________________________________________________
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Profissionais</title>
+     <link rel="stylesheet" th:href="@{/fundo.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Profissionais</h1>
+
+    <!-- Mensagem de sucesso -->
+    <div th:if="${mensagem}" class="mensagem-sucesso" th:text="${mensagem}"></div>
+
+    <table class="tabela-agendamentos">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>CPF</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="p : ${profissionais}">
+                <td th:text="${p.nome}">Nome</td>
+                <td th:text="${p.telefone}">Telefone</td>
+                <td th:text="${p.cpf}">CPF</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="botoes">
+        <a th:href="@{/gerente/menu}" class="btn">Voltar ao Menu</a>
+    </div>
+</div>
+</body>
+</html>
+_____________________________________________________________________________________________
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Gerente</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Login do Gerente</h1>
+    <form method="post" th:action="@{/gerente/login}">
+        <div class="form-group">
+            <label for="usuario">Usuário:</label>
+            <input type="text" id="usuario" name="usuario" required>
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+        </div>
+        <button type="submit" class="btn">Entrar</button>
+        <p th:if="${erro}" th:text="${erro}" style="color:red;"></p>
+    </form>
+</div>
+</body>
+</html>
+_____________________________________________________________________________________________
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu do Gerente</title>
+     <link rel="stylesheet" th:href="@{/fundo.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Menu Gerente</h1>
+    <div class="botoes">
+        <a th:href="@{/gerente/cadastrar-cliente}" class="btn">Cadastrar Cliente</a>
+        <a th:href="@{/gerente/lista-clientes}" class="btn">Confirmar Cadastro de Clientes</a>
+        <a th:href="@{/gerente/cadastrar-profissional}" class="btn">Cadastrar Profissional</a>
+        <a th:href="@{/gerente/lista-profissionais}" class="btn">Confirmar Cadastro de Profissionais</a>
+        <a th:href="@{/}" class="btn">Voltar ao Início</a>
+    </div>
+</div>
+</body>
+</html>
+_____________________________________________________________________________________________
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Novo Agendamento</title>
+    <link rel="stylesheet" th:href="@{/fundo.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Agendar Serviço</h1>
+        <form th:action="@{/agendamentos}" th:object="${agendamento}" method="post">
+            <div class="form-group">
+                <label>Data:</label>
+                <input type="date" th:field="*{data}" required />
+            </div>
+
+            <div class="form-group">
+                <label>Horário:</label>
+                <input type="time" th:field="*{horario}" required />
+            </div>
+
+            <div class="form-group">
+                <label>Tipo de Atendimento:</label>
+                <input type="text" th:field="*{tipoAtendimento}" required />
+            </div>
+
+            <div class="form-group">
+                <label>Cliente:</label>
+                <select th:field="*{cliente}" required>
+                    <option th:each="c : ${clientes}" th:value="${c.id}" th:text="${c.nome}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Profissional:</label>
+                <select th:field="*{profissional}" required>
+                    <option th:each="p : ${profissionais}" th:value="${p.id}" th:text="${p.nome}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Bebida:</label>
+                <select th:field="*{bebida}" required>
+                    <option th:each="b : ${bebidas}" th:value="${b.id}" th:text="${b.nome}"></option>
+                </select>
+            </div>
+
+            <div class="botoes">
+                <button type="submit" class="btn">Agendar</button>
+                <a th:href="@{/agendamentos}" class="btn">Cancelar</a>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>
+_____________________________________________________________________________________________
+_____________________________________________________________________________________________
+_____________________________________________________________________________________________
+_____________________________________________________________________________________________

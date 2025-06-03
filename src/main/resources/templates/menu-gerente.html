@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu do Gerente</title>
+     <link rel="stylesheet" th:href="@{/fundo.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Menu Gerente</h1>
+    <div class="botoes">
+        <a th:href="@{/gerente/cadastrar-cliente}" class="btn">Cadastrar Cliente</a>
+        <a th:href="@{/gerente/lista-clientes}" class="btn">Confirmar Cadastro de Clientes</a>
+        <a th:href="@{/gerente/cadastrar-profissional}" class="btn">Cadastrar Profissional</a>
+        <a th:href="@{/gerente/lista-profissionais}" class="btn">Confirmar Cadastro de Profissionais</a>
+        <a th:href="@{/}" class="btn">Voltar ao Início</a>
+    </div>
+</div>
+</body>
+</html>

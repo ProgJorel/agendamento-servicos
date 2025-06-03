@@ -1,0 +1,58 @@
+-- Criação do banco de dados
+CREATE DATABASE IF NOT EXISTS agendamento2
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_general_ci;
+
+-- Selecionar o banco para uso
+USE agendamento2;
+
+-- Criação da tabela 'bebida'
+CREATE TABLE IF NOT EXISTS bebida (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL
+) ENGINE=InnoDB;
+
+-- Inserção dos registros padrão na tabela 'bebida'
+INSERT INTO bebida (nome) VALUES
+('Café'),
+('Água'),
+('Chá'),
+('Suco');
+
+-- Criação da tabela 'profissional'
+CREATE TABLE IF NOT EXISTS profissional (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    telefone VARCHAR(50),
+    cpf VARCHAR(11),
+    data_cadastro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+-- Criação da tabela 'gerente'
+CREATE TABLE IF NOT EXISTS gerente (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(100) NOT NULL UNIQUE,
+    senha VARCHAR(100) NOT NULL
+) ENGINE=InnoDB;
+
+-- Inserção do gerente padrão
+INSERT INTO gerente (usuario, senha)
+SELECT * FROM (SELECT 'admin', '1234') AS tmp
+WHERE NOT EXISTS (
+    SELECT 1 FROM gerente WHERE usuario = 'admin'
+) LIMIT 1;
+
+
+-- Verificações
+USE agendamento2;
+SHOW TABLES;
+SELECT * FROM bebida;
+SELECT * FROM profissional;
+
+-- Desativa segurança para permitir UPDATE em massa
+SET SQL_SAFE_UPDATES = 0;
+UPDATE profissional SET data_cadastro = NOW();
+SET SQL_SAFE_UPDATES = 1;
+
+SHOW CREATE TABLE profissional;
+DESCRIBE profissional;

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Clientes</title>
+     <link rel="stylesheet" th:href="@{/fundo.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Clientes</h1>
+
+    <!-- Mensagem de sucesso (caso exista) -->
+    <div th:if="${mensagem}" class="mensagem-sucesso" th:text="${mensagem}"></div>
+
+    <table class="tabela-agendamentos">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="cliente : ${clientes}">
+                <td th:text="${cliente.nome}">Nome</td>
+                <td th:text="${cliente.email}">Email</td>
+                <td th:text="${cliente.telefone}">Telefone</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="botoes">
+        <a th:href="@{/gerente/menu}" class="btn">Voltar ao Menu</a>
+    </div>
+</div>
+</body>
+</html>
