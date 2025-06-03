@@ -13,6 +13,7 @@ import java.util.List;
 @RequestMapping("/api/agendamentos")
 public class AgendamentoController {
 
+   
     private final AgendamentoService service;
 
     @Autowired

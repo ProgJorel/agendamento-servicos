@@ -16,9 +16,10 @@ public class Profissional {
 
     private String telefone;
 
+    
     @Column(length = 11)
     private String cpf;
-
+    
     @Column(name = "data_cadastro", nullable = true)
     private LocalDateTime dataCadastro = LocalDateTime.now();
 

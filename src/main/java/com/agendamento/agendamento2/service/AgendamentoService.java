@@ -25,6 +25,7 @@ public class AgendamentoService {
                 .orElseThrow(() -> new ResourceNotFoundException("Agendamento com ID " + id + " não encontrado"));
     }
 
+   
     public Agendamento salvar(Agendamento agendamento) {
         return agendamentoRepository.save(agendamento);
     }
